@@ -3,112 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZekaKripto â AI Destekli Kripto Analiz</title>
+<title>ZekaKripto - AI Destekli Kripto Analiz</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --gold: #C9A84C;
-  --gold-light: #E8C97A;
-  --emerald: #00E5A0;
-  --bg: #06090F;
-  --text: #EEE1DEF;
-  --text-muted: #6B7280;
-  --border: rgba(201,168,76,0.12);
-  --red: #FF4F6A;
-  --green: #00E5A0;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Outfit', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:200;
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 1.1rem 5rem;
-  background: rgba(6,9,15,0.7);
-  backdrop-filter: blur(24px);
-  border-bottom: 0.5px solid var(--border);
-}
-.btn-primary {
-  padding:0.55rem 1.5rem;
-  background: linear-gradient(135deg, #C9A84C, #A8832A);
-  border:none; border-radius:8px;
-  color:#050810; font-size:0.85rem; font-weight:600;
-  cursor:pointer; text-decoration:none;
-}
-.hero {
-  min-height: 100vh;
-  display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  text-align:center; padding: 9rem 2rem 5rem;
-}
-h1 {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight:800; line-height:1.0;
-  letter-spacing:-0.04em; margin-bottom:1.5rem;
-}
-h1 .line2 {
-  display:block;
-  background: linear-gradient(135deg, #E8C97A, #C9A84C, #8B6914);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-}
+:root{--gold:#C9A84C;--gold-light:#E8C97A;--emerald:#00E5A0;--bg:#06090F;--bg2:#0A0F1A;--bg3:#0F1623;--text:#EEE9DF;--muted:#6B7280;--border:rgba(201,168,76,0.12);--red:#FF4F6A;--green:#00E5A0;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;background:rgba(6,9,15,0.8);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);}
+.logo{font-size:1.4rem;font-weight:800;letter-spacing:-0.03em;display:flex;align-items:center;gap:0.4rem;}
+.logo-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:8px;display:flex;align-items:center;justify-content:center;color:#050810;font-weight:800;}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.875rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.btn-primary{padding:0.55rem 1.5rem;background:linear-gradient(135deg,var(--gold),#A8832A);border:none;border-radius:8px;color:#050810;font-size:0.85rem;font-weight:600;cursor:pointer;text-decoration:none;font-family:'Outfit',sans-serif;transition:all 0.2s;}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:9rem 2rem 5rem;position:relative;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px);}
+.orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(0,229,160,0.07),transparent 70%);top:-100px;left:-100px;animation:float 8s ease-in-out infinite;}
+.orb-2{width:600px;height:600px;background:radial-gradient(circle,rgba(201,168,76,0.06),transparent 70%);top:10%;right:-150px;animation:float 10s ease-in-out infinite reverse;}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(30px,-20px) scale(1.05);}66%{transform:translate(-20px,30px) scale(0.98);}}
+.hero-grid{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(201,168,76,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.03) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,black,transparent);}
+.hero-content{position:relative;z-index:2;}
+.badge{display:inline-flex;align-items:center;gap:0.6rem;padding:0.45rem 1.1rem;border:0.5px solid rgba(0,229,160,0.25);border-radius:100px;font-size:0.75rem;color:var(--emerald);margin-bottom:2rem;background:rgba(0,229,160,0.05);letter-spacing:0.06em;text-transform:uppercase;}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--emerald);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);}}
+h1{font-size:clamp(3rem,8vw,6rem);font-weight:800;line-height:1.0;letter-spacing:-0.04em;margin-bottom:1.5rem;max-width:1000px;}
+.grad{display:block;background:linear-gradient(135deg,var(--gold-light),var(--gold),#8B6914);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.desc{font-size:1.1rem;color:var(--muted);max-width:560px;margin:0 auto 2.5rem;font-weight:300;line-height:1.75;}
+.actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-big{padding:0.85rem 2.2rem;font-size:1rem;border-radius:10px;}
+.btn-ghost{padding:0.85rem 2.2rem;font-size:1rem;border-radius:10px;background:transparent;border:0.5px solid var(--border);color:var(--muted);font-family:'Outfit',sans-serif;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.stats{display:flex;gap:0;justify-content:center;border:0.5px solid var(--border);border-radius:12px;overflow:hidden;max-width:600px;margin:0 auto;background:rgba(10,15,26,0.6);}
+.stat{flex:1;padding:1.2rem 1.5rem;text-align:center;border-right:0.5px solid var(--border);}
+.stat:last-child{border-right:none;}
+.stat-num{font-size:1.6rem;font-weight:700;display:block;margin-bottom:0.2rem;}
+.stat-num span{color:var(--gold);}
+.stat-label{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.ticker-wrap{border-top:0.5px solid rgba(255,255,255,0.06);border-bottom:0.5px solid rgba(255,255,255,0.06);background:var(--bg2);padding:0.9rem 0;overflow:hidden;position:relative;}
+.ticker-wrap::before,.ticker-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
+.ticker-wrap::before{left:0;background:linear-gradient(to right,var(--bg2),transparent);}
+.ticker-wrap::after{right:0;background:linear-gradient(to left,var(--bg2),transparent);}
+.ticker-track{display:flex;gap:3rem;animation:ticker 35s linear infinite;white-space:nowrap;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.t-item{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.82rem;}
+.t-name{color:#9CA3AF;font-weight:500;}
+.t-price{color:var(--text);font-weight:500;}
+.t-up{color:var(--green);font-size:0.78rem;}
+.t-dn{color:var(--red);font-size:0.78rem;}
+.section{padding:7rem 4rem;position:relative;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:500;}
+.label::before{content:'';width:20px;height:1px;background:var(--gold);display:block;}
+h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.2rem;}
+.sub{color:var(--muted);font-size:1rem;font-weight:300;line-height:1.75;max-width:540px;margin-bottom:3.5rem;}
+.mods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;}
+.mod{background:var(--bg2);padding:1.8rem 1.5rem;transition:background 0.2s;}
+.mod:hover{background:var(--bg3);}
+.mod-num{font-size:2rem;font-weight:700;color:rgba(255,255,255,0.06);margin-bottom:1rem;letter-spacing:-0.04em;}
+.mod-icon{width:40px;height:40px;border-radius:10px;background:rgba(201,168,76,0.12);border:0.5px solid rgba(201,168,76,0.18);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1rem;}
+.mod-title{font-size:0.95rem;font-weight:600;margin-bottom:0.4rem;}
+.mod-desc{font-size:0.82rem;color:var(--muted);line-height:1.55;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:900px;margin:0 auto;}
+.price-card{background:var(--bg2);border:0.5px solid rgba(255,255,255,0.06);border-radius:16px;padding:2rem;position:relative;transition:transform 0.3s;}
+.price-card:hover{transform:translateY(-4px);}
+.price-card.pop{border-color:var(--gold);background:linear-gradient(160deg,rgba(201,168,76,0.06),var(--bg2));}
+.pop-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#050810;font-size:0.68rem;font-weight:700;padding:0.25rem 0.9rem;border-radius:100px;text-transform:uppercase;letter-spacing:0.08em;white-space:nowrap;}
+.plan-name{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.6rem;}
+.plan-price{font-size:2.8rem;font-weight:700;letter-spacing:-0.03em;margin-bottom:0.2rem;line-height:1;}
+.plan-period{font-size:0.82rem;color:var(--muted);margin-bottom:1.5rem;}
+.plan-features{list-style:none;margin-bottom:1.8rem;}
+.plan-features li{font-size:0.85rem;color:#9CA3AF;padding:0.45rem 0;border-bottom:0.5px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:0.6rem;}
+.plan-features li:last-child{border-bottom:none;}
+.check{color:var(--emerald);font-size:0.8rem;flex-shrink:0;}
+.dash{color:var(--muted);font-size:0.8rem;flex-shrink:0;}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.t-card{background:var(--bg3);border:0.5px solid rgba(255,255,255,0.06);border-radius:16px;padding:2rem;text-align:center;transition:border-color 0.2s;}
+.t-card:hover{border-color:var(--border);}
+.t-big{font-size:3rem;font-weight:700;color:var(--gold);display:block;margin-bottom:0.5rem;line-height:1;}
+.t-label{font-size:0.85rem;color:var(--muted);line-height:1.5;}
+.cta-section{text-align:center;background:var(--bg2);}
+.cta-inner{max-width:650px;margin:0 auto;position:relative;}
+footer{padding:2rem 4rem;border-top:0.5px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-size:1.1rem;font-weight:700;}
+.footer-logo span{color:var(--gold);}
+.footer-links{display:flex;gap:1.5rem;}
+.footer-links a{font-size:0.8rem;color:var(--muted);text-decoration:none;}
+.footer-links a:hover{color:var(--text);}
+.footer-copy{font-size:0.8rem;color:var(--muted);}
+.disclaimer{padding:0 4rem 2rem;font-size:0.73rem;color:var(--muted);opacity:0.5;line-height:1.6;max-width:1200px;}
+@media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links{display:none;}.section{padding:4rem 1.5rem;}.mods-grid{grid-template-columns:repeat(2,1fr);}.pricing-grid,.trust-grid{grid-template-columns:1fr;}footer{padding:1.5rem;}.disclaimer{padding:0 1.5rem 1.5rem;}}
 </style>
 </head>
 <body>
 <nav>
-  <div style="font-size:1.4rem;font-weight:800;display:flex;align-items:center;gap:0.4rem;">
-    <div style="width:32px;height:32px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#050810;font-weight:800;">Z</div>
-    Zeka<span style="color:#C9A84C">Kripto</span>
+  <div class="logo"><div class="logo-icon">Z</div>Zeka<span>Kripto</span></div>
+  <ul class="nav-links"><li><a href="#nasil">Nasil Calisir</a></li><li><a href="#moduller">Moduller</a></li><li><a href="#fiyat">Fiyatlar</a></li></ul>
+  <div style="display:flex;gap:0.75rem;align-items:center;">
+    <a href="#" style="padding:0.55rem 1.3rem;background:transparent;border:0.5px solid rgba(255,255,255,0.06);border-radius:8px;color:#9CA3AF;font-size:0.85rem;font-family:Outfit,sans-serif;cursor:pointer;text-decoration:none;">Giris Yap</a>
+    <a href="#" class="btn-primary">Ucretsiz Basla</a>
   </div>
-  <a href="#" class="btn-primary">Ãcretsiz BaÅla â</a>
 </nav>
 
 <section class="hero">
-  <div style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.45rem 1.1rem;border:0.5px solid rgba(0,229,160,0.25);border-radius:100px;font-size:0.75rem;color:#00E5A0;margin-bottom:2.2rem;background:rgba(0,229,160,0.05);letter-spacing:0.06em;text-transform:uppercase;">
-    <div style="width:6px;height:6px;border-radius:50%;background:#00E5A0;animation:pulse 2s infinite;"></div>
-    Yapay Zeka Destekli Kripto Analizi
-  </div>
-
-  <h1>
-    PiyasayÄ± Anla,<br>
-    <span class="line2">DoÄru Karar Ver</span>
-  </h1>
-
-  <p style="font-size:1.1rem;color:#6B7280;max-width:560px;margin:0 auto 2.5rem;font-weight:300;line-height:1.75;">
-    Balina hareketleri, arbitraj fÄ±rsatlarÄ±, yeni coin analizleri â hepsi tek platformda. Bilmiyorsak sÃ¶yleriz. Biliyorsak gÃ¶steririz.
-  </p>
-
-  <div style="display:flex;gap:1rem;justify-content:center;margin-bottom:4rem;">
-    <a href="#" class="btn-primary" style="padding:0.85rem 2.2rem;font-size:1rem;border-radius:10px;">Ãcretsiz Dene â 14 GÃ¼n</a>
-  </div>
-  <div style="display:flex;border:0.5px solid rgba(201,168,76,0.12);border-radius:12px;overflow:hidden;max-width:600px;margin:0 auto;background:rgba(10,15,26,0.6);">
-    <div style="flex:1;padding:1.2rem 1.5rem;text-align:center;border-right:0.5px solid rgba(201,168,76,0.12);">
-      <span style="font-size:1.6rem;font-weight:700;display:block;margin-bottom:0.2rem;"><span style="color:#C9A84C">%</span>Beta</span>
-      <span style="font-size:0.72rem;color:#6B7280;text-transform:uppercase;letter-spacing:0.08em;">Tahmin Sistemi</span>
+  <div class="hero-grid"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-content">
+    <div class="badge"><div class="pulse"></div>Yapay Zeka Destekli Kripto Analizi</div>
+    <h1>Piyasayi Anla,<br><span class="grad">Dogru Karar Ver</span></h1>
+    <p class="desc">Balina hareketleri, arbitraj firsatlari, yeni coin analizleri - hepsi tek platformda, sade dilde. Bilmiyorsak soyleriz. Biliyorsak gosteririz.</p>
+    <div class="actions">
+      <a href="#" class="btn-primary btn-big">Ucretsiz Dene - 14 Gun</a>
+      <a href="#nasil" class="btn-ghost">Nasil Calisir?</a>
     </div>
-    <div style="flex:1;padding:1.2rem 1.5rem;text-align:center;border-right:0.5px solid rgba(201,168,76,0.12);">
-      <span style="font-size:1.6rem;font-weight:700;display:block;margin-bottom:0.2rem;">500<span style="color:#C9A84C;">+</span></span>
-      <span style="font-size:0.72rem;color:#6B7280;text-transform:uppercase;letter-spacing:0.08em;">Coin Takibi</span>
-    </div>
-    <div style="flex:1;padding:1.2rem 1.5rem;text-align:center;">
-      <span style="font-size:1.6rem;font-weight:700;display:block;margin-bottom:0.2rem;">17</span>
-      <span style="font-size:0.72rem;color:#6B7280;text-transform:uppercase;letter-spacing:0.08em;">Analiz ModÃ¼lÃ¼</span>
+    <div class="stats">
+      <div class="stat"><span class="stat-num">Beta</span><span class="stat-label">Tahmin Sistemi</span></div>
+      <div class="stat"><span class="stat-num">500<span>+</span></span><span class="stat-label">Coin Takibi</span></div>
+      <div class="stat"><span class="stat-num">17</span><span class="stat-label">Analiz Modulu</span></div>
     </div>
   </div>
 </section>
 
-<footer style="padding:2rem 5rem;border-top:0.5px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;font-size:0.8rem;color:#6B7280;">
-  <div><b>Zka</b><span style="color:#C9A84C;">Kripto</span></div>
-  <p>Risk UyarÄ±sÄ±: Bu platform yatÄ±rÄ±m tavsiyesi vermez. TÃ¼m kararlar kullanÄ±cÄ±ya aittir.</p>
-</footer>
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="t-item"><span class="t-name">BTC</span><span class="t-price">$67,420</span><span class="t-up">+2.4%</span></span>
+    <span style="color:var(--border);font-size:1.2rem;">·</span>
+    <span class="t-item"><span class="t-name">ETH</span><span class="t-price">$3,241</span><span class="t-up">+1.8%</span></span>
+    <span style="color:var(--border);font-size:1.2rem;">·</span>
+    <span class="t-item"><span class="t-name">SOL</span><span class="t-price">$143.8</span><span class="t-up">+4.2%</span></span>
+    <span style="color:var(--border);font-size:1.2rem;">·</span>
+    <span class="t-item"><span class="t-name">BNB</span><span class="t-price">$412</span><span class="t-dn">-0.6%</span></span>
+    <span style="color:var(--border);font-size:1.2rem;">·</span>
+    <span class="t-item"><span class="t-name">XRP</span><span class="t-price">$0.584</span><span class="t-up">+1.1%</span></span>
+    <span style="color:var(--border);font-size:1.2rem;">·</span>
+    <span class="t-item"><span class="t-name">AVAX</span><span class="t-price">$36.2</span><span class="t-up">+3.7%</span></span>
+    <span style="color:var(--border);font-size:1.2rem;">·</span>
+    <span class="t-item"><span class="t-name">BTC</span><span class="t-price">$67,420</span><span class="t-up">+2.4%</span></span>
+    <span style="color:var(--border);font-size:1.2rem;">·</span>
+    <span class="t-item"><span class="t-name">ETH</span><span class="t-price">$3,241</span><span class="t-up">+1.8%</span></span>
+    <span style="color:var(--border);font-size:1.2rem;">·</span>
+    <span class="t-item"><span class="t-name">SOL</span><span class="t-price">$143.8</span><span class="t-up">+4.2%</span></span>
+    <span style="color:var(--border);font-size:1.2rem;">·</span>
+    <span class="t-item"><span class="t-name">BNB</span><span class="t-price">$412</span><span class="t-dn">-0.6%</span></span>
+  </div>
+</div>
 
-<style>@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }</style>
+<section class="section" id="moduller" style="background:var(--bg2);">
+  <div class="section-inner">
+    <div class="label">Moduller</div>
+    <h2>17 Farkli Analiz Araci</h2>
+    <p class="sub">Her modul kendi sayfasinda. Karisiklik yok, her sey net ve amacina ozel.</p>
+    <div class="mods-grid">
+      <div class="mod"><div class="mod-num">01</div><div class="mod-icon">&#x26A1;</div><div class="mod-title">Arbitraj Dedektoru</div><div class="mod-desc">Borsalar arasi fiyat farklarini anlik tara. Gercek net kar - tum ucretler dahil.</div></div>
+      <div class="mod"><div class="mod-num">02</div><div class="mod-icon">&#x1F433;</div><div class="mod-title">Balina Takibi</div><div class="mod-desc">Buyuk cuzdanlar ve kurumsal hareketler gercek zamanli izlenir.</div></div>
+      <div class="mod"><div class="mod-num">03</div><div class="mod-icon">&#x1F534;</div><div class="mod-title">Rug Pull Dedektoru</div><div class="mod-desc">Yeni coinlerde dolandiricilik isaretlerini otomatik tespit. Erken uyari sistemi.</div></div>
+      <div class="mod"><div class="mod-num">04</div><div class="mod-icon">&#x1F30D;</div><div class="mod-title">Global Makro Analiz</div><div class="mod-desc">Fed, DXY, enflasyon - kripto piyasasina etkisi anlik hesaplanir.</div></div>
+      <div class="mod"><div class="mod-num">05</div><div class="mod-icon">&#x1F4B0;</div><div class="mod-title">Funding Rate</div><div class="mod-desc">Futures/spot farkından dusuk riskli surekli gelir elde et.</div></div>
+      <div class="mod"><div class="mod-num">06</div><div class="mod-icon">&#x1F4F0;</div><div class="mod-title">Haber &amp; Sentiment</div><div class="mod-desc">AI haber akisini isler, piyasa etkisini aninda raporlar.</div></div>
+      <div class="mod"><div class="mod-num">07</div><div class="mod-icon">&#x1F4DC;</div><div class="mod-title">Tahmin Gecmisi</div><div class="mod-desc">Tum tahminlerimiz kayitli ve herkese acik. Basari oranımizi gizlemiyoruz.</div></div>
+      <div class="mod"><div class="mod-num">08</div><div class="mod-icon">&#x1F393;</div><div class="mod-title">Egitim Merkezi</div><div class="mod-desc">Her analiz neden bu skoru aldigini aciklar. Anlayarak karar ver.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="fiyat">
+  <div class="section-inner" style="text-align:center;">
+    <div class="label" style="justify-content:center;">Fiyatlar</div>
+    <h2 style="margin:0 auto 1rem;">Seffaf Fiyatlandirma</h2>
+    <p class="sub" style="margin:0 auto 3rem;">Gizli ucret yok. Istedigin zaman iptal et.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="plan-name">Ucretsiz</div>
+        <div class="plan-price">&#x20BA;0</div>
+        <div class="plan-period">Sonsuza kadar ucretsiz</div>
+        <ul class="plan-features">
+          <li><span class="check">&#x2713;</span> Temel coin bilgileri</li>
+          <li><span class="check">&#x2713;</span> 10 analiz / gun</li>
+          <li><span class="check">&#x2713;</span> Haber akisi</li>
+          <li><span class="dash">-</span> Sinyaller</li>
+          <li><span class="dash">-</span> Balina takibi</li>
+        </ul>
+        <a href="#" style="display:block;text-align:center;padding:0.85rem;border-radius:10px;background:transparent;border:0.5px solid rgba(255,255,255,0.06);color:#9CA3AF;text-decoration:none;font-family:Outfit,sans-serif;font-size:0.85rem;">Ucretsiz Basla</a>
+      </div>
+      <div class="price-card pop">
+        <div class="pop-badge">En Populer</div>
+        <div class="plan-name">Baslangic</div>
+        <div class="plan-price">&#x20BA;99</div>
+        <div class="plan-period">aylik</div>
+        <ul class="plan-features">
+          <li><span class="check">&#x2713;</span> Tum coin analizleri</li>
+          <li><span class="check">&#x2713;</span> Sinyaller &amp; alarmlar</li>
+          <li><span class="check">&#x2713;</span> Balina takibi</li>
+          <li><span class="check">&#x2713;</span> Senaryo analizi</li>
+          <li><span class="check">&#x2713;</span> Reklam yok</li>
+        </ul>
+        <a href="#" class="btn-primary" style="display:block;text-align:center;padding:0.85rem;border-radius:10px;">Hemen Basla</a>
+      </div>
+      <div class="price-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">&#x20BA;299</div>
+        <div class="plan-period">aylik</div>
+        <ul class="plan-features">
+          <li><span class="check">&#x2713;</span> Her sey dahil</li>
+          <li><span class="check">&#x2713;</span> Arbitraj modulu</li>
+          <li><span class="check">&#x2713;</span> Portfolyo kocu AI</li>
+          <li><span class="check">&#x2713;</span> Funding rate analizi</li>
+          <li><span class="check">&#x2713;</span> Oncelikli destek</li>
+        </ul>
+        <a href="#" style="display:block;text-align:center;padding:0.85rem;border-radius:10px;background:transparent;border:0.5px solid rgba(255,255,255,0.06);color:#9CA3AF;text-decoration:none;font-family:Outfit,sans-serif;font-size:0.85rem;">Pro'ya Gec</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg2);">
+  <div class="section-inner" style="text-align:center;">
+    <div class="label" style="justify-content:center;">Seffaflik</div>
+    <h2 style="margin:0 auto 1rem;">Donurstluk Birinci Oncelik</h2>
+    <p class="sub" style="margin:0 auto;">Gercek yoksa oneri vermeyiz. Tum tahminlerimiz kayitli ve herkese acik.</p>
+    <div class="trust-grid">
+      <div class="t-card"><span class="t-big">Beta</span><span class="t-label">Tahmin basari orani<br>dogrulanıyor</span></div>
+      <div class="t-card"><span class="t-big">500+</span><span class="t-label">Takip edilen coin<br>gercek zamanli</span></div>
+      <div class="t-card"><span class="t-big">0</span><span class="t-label">Gizli ucret<br>veya surpriz kesinti</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section cta-section">
+  <div class="cta-inner">
+    <div class="label" style="justify-content:center;">Basla</div>
+    <h2 style="margin:0 auto 1rem;">Kripto Dunyasinda<br>Zekani Kullan</h2>
+    <p class="sub" style="margin:0 auto 2.5rem;">Ucretsiz hesap ac, 14 gun tum ozellikleri test et.<br>Kredi karti gerekmez.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="#" class="btn-primary btn-big">Ucretsiz Hesap Ac</a>
+      <a href="#" class="btn-ghost">Demo Izle</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Zeka<span>Kripto</span></div>
+  <div class="footer-links"><a href="#">Gizlilik</a><a href="#">Kullanim Sartlari</a><a href="#">Iletisim</a></div>
+  <div class="footer-copy">&copy; 2026 ZekaKripto. Tum haklari saklidir.</div>
+</footer>
+<p class="disclaimer">Risk Uyarisi: Kripto para yatirimlari yuksek risk icerir. ZekaKripto'nun sundugu analizler bilgilendirme amacli olup yatirim tavsiyesi degildir. Tum kararlar kullaniciya aittir.</p>
 </body>
-</html>
+  </html>

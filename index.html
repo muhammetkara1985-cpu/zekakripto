@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZekaKripto â AI Destekli Kripto Analiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --emerald: #00E5A0;
+  --bg: #06090F;
+  --text: #EEE1DEF;
+  --text-muted: #6B7280;
+  --border: rgba(201,168,76,0.12);
+  --red: #FF4F6A;
+  --green: #00E5A0;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 1.1rem 5rem;
+  background: rgba(6,9,15,0.7);
+  backdrop-filter: blur(24px);
+  border-bottom: 0.5px solid var(--border);
+}
+.btn-primary {
+  padding:0.55rem 1.5rem;
+  background: linear-gradient(135deg, #C9A84C, #A8832A);
+  border:none; border-radius:8px;
+  color:#050810; font-size:0.85rem; font-weight:600;
+  cursor:pointer; text-decoration:none;
+}
+.hero {
+  min-height: 100vh;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center; padding: 9rem 2rem 5rem;
+}
+h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight:800; line-height:1.0;
+  letter-spacing:-0.04em; margin-bottom:1.5rem;
+}
+h1 .line2 {
+  display:block;
+  background: linear-gradient(135deg, #E8C97A, #C9A84C, #8B6914);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+</style>
+</head>
+<body>
+<nav>
+  <div style="font-size:1.4rem;font-weight:800;display:flex;align-items:center;gap:0.4rem;">
+    <div style="width:32px;height:32px;background:linear-gradient(135deg,#C9A84C,#E8C97A);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#050810;font-weight:800;">Z</div>
+    Zeka<span style="color:#C9A84C">Kripto</span>
+  </div>
+  <a href="#" class="btn-primary">Ãcretsiz BaÅla â</a>
+</nav>
+
+<section class="hero">
+  <div style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.45rem 1.1rem;border:0.5px solid rgba(0,229,160,0.25);border-radius:100px;font-size:0.75rem;color:#00E5A0;margin-bottom:2.2rem;background:rgba(0,229,160,0.05);letter-spacing:0.06em;text-transform:uppercase;">
+    <div style="width:6px;height:6px;border-radius:50%;background:#00E5A0;animation:pulse 2s infinite;"></div>
+    Yapay Zeka Destekli Kripto Analizi
+  </div>
+
+  <h1>
+    PiyasayÄ± Anla,<br>
+    <span class="line2">DoÄru Karar Ver</span>
+  </h1>
+
+  <p style="font-size:1.1rem;color:#6B7280;max-width:560px;margin:0 auto 2.5rem;font-weight:300;line-height:1.75;">
+    Balina hareketleri, arbitraj fÄ±rsatlarÄ±, yeni coin analizleri â hepsi tek platformda. Bilmiyorsak sÃ¶yleriz. Biliyorsak gÃ¶steririz.
+  </p>
+
+  <div style="display:flex;gap:1rem;justify-content:center;margin-bottom:4rem;">
+    <a href="#" class="btn-primary" style="padding:0.85rem 2.2rem;font-size:1rem;border-radius:10px;">Ãcretsiz Dene â 14 GÃ¼n</a>
+  </div>
+  <div style="display:flex;border:0.5px solid rgba(201,168,76,0.12);border-radius:12px;overflow:hidden;max-width:600px;margin:0 auto;background:rgba(10,15,26,0.6);">
+    <div style="flex:1;padding:1.2rem 1.5rem;text-align:center;border-right:0.5px solid rgba(201,168,76,0.12);">
+      <span style="font-size:1.6rem;font-weight:700;display:block;margin-bottom:0.2rem;"><span style="color:#C9A84C">%</span>Beta</span>
+      <span style="font-size:0.72rem;color:#6B7280;text-transform:uppercase;letter-spacing:0.08em;">Tahmin Sistemi</span>
+    </div>
+    <div style="flex:1;padding:1.2rem 1.5rem;text-align:center;border-right:0.5px solid rgba(201,168,76,0.12);">
+      <span style="font-size:1.6rem;font-weight:700;display:block;margin-bottom:0.2rem;">500<span style="color:#C9A84C;">+</span></span>
+      <span style="font-size:0.72rem;color:#6B7280;text-transform:uppercase;letter-spacing:0.08em;">Coin Takibi</span>
+    </div>
+    <div style="flex:1;padding:1.2rem 1.5rem;text-align:center;">
+      <span style="font-size:1.6rem;font-weight:700;display:block;margin-bottom:0.2rem;">17</span>
+      <span style="font-size:0.72rem;color:#6B7280;text-transform:uppercase;letter-spacing:0.08em;">Analiz ModÃ¼lÃ¼</span>
+    </div>
+  </div>
+</section>
+
+<footer style="padding:2rem 5rem;border-top:0.5px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;font-size:0.8rem;color:#6B7280;">
+  <div><b>Zka</b><span style="color:#C9A84C;">Kripto</span></div>
+  <p>Risk UyarÄ±sÄ±: Bu platform yatÄ±rÄ±m tavsiyesi vermez. TÃ¼m kararlar kullanÄ±cÄ±ya aittir.</p>
+</footer>
+
+<style>@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }</style>
+</body>
+</html>
